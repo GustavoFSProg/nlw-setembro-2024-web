@@ -1,3 +1,4 @@
+import { Plus } from 'lucide-react'
 import './index.css'
 import logo from './assets/in-orbit-logo.svg'
 import start from './assets/lets-start.svg'
@@ -14,7 +15,25 @@ function App() {
           height="320"
           alt="lstartogo"
         />
-        {/* <h1 className="p-10 bg-zinc-600 text-slate-100 text-2xl">OLÁAAA!!</h1> */}
+        <p className="text-zinc-300 leading-relaxed max-w-80 text-center">
+          Você ainda não cadastrou nenhuma meta, que tal cadastrar um agora
+          mesmo?
+        </p>
+
+        <button
+          className="flex  flex-row 
+        items-center justify-center
+        bg-violet-500
+        rounded
+        text-md
+        text-white
+        p-2
+         w-48"
+          type="button"
+        >
+          <Plus className="size-4 mr-1.5" />
+          Cadastrar Meta
+        </button>
       </div>
     </>
   )

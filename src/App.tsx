@@ -7,18 +7,13 @@ import Sumary from './components/sumary'
 
 function App() {
   return (
-    <div
-      className="bg-zinc-900 text-white 
-    
-h-full
-w-full"
-    >
+    <>
       <Dialog>
         <Sumary />
-        {/* <EmptyGoals /> */}
+        <EmptyGoals />
         {/* <CreateGoals /> */}
       </Dialog>
-    </div>
+    </>
   )
 }
 

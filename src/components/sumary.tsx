@@ -1,6 +1,6 @@
 import { Plus } from 'lucide-react'
 import { Button } from './ui/button'
-import { DialogClose, DialogTrigger } from './ui/dialog'
+import { DialogTrigger } from './ui/dialog'
 import CreateGoal from './create-goal'
 
 function Sumary() {

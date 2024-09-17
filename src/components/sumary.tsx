@@ -6,8 +6,42 @@ import InOrbitIconSVG from './in-orbit-icon'
 import { Progress, ProgressIndicator } from './ui/progress-bar'
 import { Separator } from './ui/separator'
 import { OutlineButton } from './ui/outline-button'
+import { useQuery } from '@tanstack/react-query'
+import { getSummary } from '../http/get-summary'
+import dayjs from 'dayjs'
+// import ptBR from 'dayjs/locale/pt-BR'
+
+// dayjs.locale(ptBR)
+
+type SummaryResponse = {
+  completed: number
+  total: number
+  goalsPerDay: Record<
+    string,
+    {
+      id: string
+      title: string
+      createdAt: string
+    }[]
+  >
+}
 
 function Sumary() {
+  const { data } = useQuery<SummaryResponse | undefined>({
+    queryKey: ['summary'],
+    queryFn: getSummary,
+    staleTime: 1000 * 60, // 60 seconds
+  })
+
+  if (!data) {
+    return null
+  }
+
+  const firstDayOfWeek = dayjs().startOf('week').format('D MMM')
+  const lastDayOfWeek = dayjs().endOf('week').format('D MMM')
+
+  const completedPrecentage = Math.round((data?.completed * 100) / data?.total)
+
   return (
     <div
       className=" bg-zinc-900 
@@ -35,7 +69,11 @@ function Sumary() {
         >
           <div className="flex items-center gap-3">
             <InOrbitIconSVG />
-            <span className="text-lg font-semibold ">5 a 10 de agosto</span>
+            <span className="text-lg font-semibold ">
+              {firstDayOfWeek}
+              <span className="mr-2 ml-2"> -</span>
+              {lastDayOfWeek}
+            </span>
           </div>
           <div className="flex items-center justify-between">
             <DialogTrigger asChild>
@@ -48,17 +86,17 @@ function Sumary() {
         </div>
         <div className="flex flex-col gap-3">
           <Progress value={8} max={15}>
-            <ProgressIndicator style={{ width: '200px' }} />
+            <ProgressIndicator style={{ width: `${completedPrecentage}` }} />
           </Progress>
 
           <div className="flex items-center justify-between text-xs text-zinc-400">
             <span>
               Você completou
-              <span className="text-zinc-100 ml-1">5</span> das
-              <span className="text-zinc-100 ml-1 mr-1">8</span>
+              <span className="text-zinc-100 ml-1">{data?.completed}</span> das
+              <span className="text-zinc-100 ml-1 mr-1">{data?.total}</span>
               metas da semana
             </span>
-            <span>60%</span>
+            <span>{completedPrecentage}%</span>
           </div>
           <Separator />
           <div className="flex flex-wrap gap-3">

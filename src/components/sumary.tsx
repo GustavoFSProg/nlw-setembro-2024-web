@@ -9,9 +9,15 @@ import { OutlineButton } from './ui/outline-button'
 import { useQuery } from '@tanstack/react-query'
 import { getSummary } from '../http/get-summary'
 import dayjs from 'dayjs'
-// import ptBR from 'dayjs/locale/pt-BR'
+import ptBR from 'dayjs/locale/pt-br'
+import {
+  ReactElement,
+  JSXElementConstructor,
+  ReactNode,
+  ReactPortal,
+} from 'react'
 
-// dayjs.locale(ptBR)
+dayjs.locale(ptBR)
 
 type SummaryResponse = {
   completed: number
@@ -124,43 +130,56 @@ function Sumary() {
         <div className="flex flex-col  gap-6">
           <h2 className="text-xl font-medium">Sua Semana!</h2>
 
-          <div className="flex flex-col  gap-4">
-            <h3 className="font-medium">
-              Domingo:
-              <span className="text-zinc-400 ml-2 text-xs">(10 de agosto)</span>
-            </h3>
+          {Object.entries(data.goalsPerDay).map(([date, goals]: any) => {
+            const weekDay = dayjs(date).format('dddd')
 
-            <ul className="flex flex-col gap-3">
-              <li className="flex items-center gap-2">
-                <CheckCircle className="size-4 text-pink-500" />
-                <span className="text-smal text-zinc-400">
-                  Você completou "
-                  <span className="text-zinc-100">Acordar Cedo</span>" ás
-                  <span className="text-zinc-100 ml-2">08:30</span>
-                </span>
-              </li>
+            const formatDate = dayjs(date).format('D[ de ]MMM')
+            // const toDate = dayjs().endOf('week').format('D[ de ]MMM')
 
-              <li className="flex items-center gap-2">
-                <CheckCircle className="size-4 text-pink-500" />
-                <span className="text-smal text-zinc-400">
-                  Você completou "
-                  <span className="text-zinc-100">Ler um Livro</span>" ás
-                  <span className="text-zinc-100 ml-2">14:30</span>
-                </span>
-              </li>
+            return (
+              <div key={date} className="flex flex-col  gap-4">
+                <h3 className="font-medium">
+                  {weekDay}
+                  <span className="text-zinc-400 ml-2 text-xs">
+                    {formatDate}
+                  </span>
+                </h3>
 
-              <li className="flex items-center gap-2">
-                <CheckCircle className="size-4 text-pink-500" />
-                <span className="text-smal text-zinc-400">
-                  Você completou "
-                  <span className="text-zinc-100">Andar á cavaloS</span>" ás
-                  <span className="text-zinc-100 ml-2">10:30</span>
-                </span>
-              </li>
-            </ul>
-          </div>
+                <ul className="flex flex-col gap-3">
+                  {goals.map(
+                    (goal: {
+                      title:
+                        | string
+                        | number
+                        | boolean
+                        | ReactElement<any, string | JSXElementConstructor<any>>
+                        | Iterable<ReactNode>
+                        | ReactPortal
+                        | null
+                        | undefined
+                    }) => {
+                      const time = dayjs(goal.completedAt).format('HH:MM')
+                      return (
+                        <li key={goal.id} className="flex items-center gap-2">
+                          <CheckCircle className="size-4 text-pink-500" />
+                          <span className="text-smal text-zinc-400">
+                            Você completou "
+                            <span className="text-zinc-100 ml-1 mr-1">
+                              {goal.title}"
+                            </span>
+                            {formatDate}
+                            <span className="text-zinc-100 ml-2">{time}</span>
+                          </span>
+                        </li>
+                      )
+                    }
+                  )}
+                </ul>
+              </div>
+            )
+          })}
 
-          <div className="flex flex-col  gap-4">
+          {/* <div className="flex flex-col  gap-4">
             <h3 className="font-medium">
               Segunda:
               <span className="text-zinc-400 ml-2 text-xs">
@@ -196,7 +215,7 @@ function Sumary() {
                 </span>
               </li>
             </ul>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

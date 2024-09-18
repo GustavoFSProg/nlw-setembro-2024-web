@@ -16,6 +16,7 @@ import {
   ReactNode,
   ReactPortal,
 } from 'react'
+import { PendingGoals } from './pending-goals'
 
 dayjs.locale(ptBR)
 
@@ -105,7 +106,8 @@ function Sumary() {
             <span>{completedPrecentage}%</span>
           </div>
           <Separator />
-          <div className="flex flex-wrap gap-3">
+          <PendingGoals />
+          {/* <div className="flex flex-wrap gap-3">
             <OutlineButton>
               <Plus className="size-4 text-zinc-600" />
               Meditar
@@ -125,7 +127,7 @@ function Sumary() {
               <Plus className="size-4 text-zinc-600" />
               Ver um filme
             </OutlineButton>
-          </div>
+          </div> */}
         </div>
         <div className="flex flex-col  gap-6">
           <h2 className="text-xl font-medium">Sua Semana!</h2>

@@ -55,14 +55,14 @@ function Sumary() {
       flex 
         justify-center 
         items-center     
-    h-screen 
+    h-auto 
     w-full"
     >
       <div
         className=" bg-zinc-800 
         gap-6 text-white py-10
        flex flex-col
-    h-[800px] 
+    h-auto
     w-[480px]
     -mt-10
     px-5"
@@ -107,27 +107,6 @@ function Sumary() {
           </div>
           <Separator />
           <PendingGoals />
-          {/* <div className="flex flex-wrap gap-3">
-            <OutlineButton>
-              <Plus className="size-4 text-zinc-600" />
-              Meditar
-            </OutlineButton>
-
-            <OutlineButton>
-              <Plus className="size-4 text-zinc-600" />
-              Caminar
-            </OutlineButton>
-
-            <OutlineButton>
-              <Plus className="size-4 text-zinc-600" />
-              Ler um Livro
-            </OutlineButton>
-
-            <OutlineButton>
-              <Plus className="size-4 text-zinc-600" />
-              Ver um filme
-            </OutlineButton>
-          </div> */}
         </div>
         <div className="flex flex-col  gap-6">
           <h2 className="text-xl font-medium">Sua Semana!</h2>
@@ -160,7 +139,9 @@ function Sumary() {
                         | null
                         | undefined
                     }) => {
-                      const time = dayjs(goal.completedAt).format('HH:MM')
+                      const time = dayjs(goal.createdAt).format('HH:mm[h]')
+
+                      // dayjs(goal.createdAt).format('HH:MM')
                       return (
                         <li key={goal.id} className="flex items-center gap-2">
                           <CheckCircle className="size-4 text-pink-500" />

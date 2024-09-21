@@ -21,6 +21,8 @@ export function PendingGoals() {
 
     queryClient.invalidateQueries({ queryKey: ['pending-goals'] })
     queryClient.invalidateQueries({ queryKey: ['summary'] })
+
+    // location.reload()
   }
 
   return (

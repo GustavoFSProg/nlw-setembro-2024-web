@@ -7,7 +7,11 @@ import { DialogTrigger } from './ui/dialog'
 
 function EmptyGoals() {
   return (
-    <div className=" bg-zinc-800 flex flex-col h-screen items-center justify-center gap-8">
+    <div
+      className=" bg-zinc-800 flex flex-col h-screen 
+    max-md:mt-36
+    items-center justify-center gap-8"
+    >
       <img src={logo} width="115" height="16" alt="logo" />
       <img
         src={start}

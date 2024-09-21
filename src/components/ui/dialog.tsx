@@ -20,7 +20,7 @@ export function DialogOverlay(props: DialogPrimitive.DialogOverlayProps) {
   return (
     <DialogPrimitive.DialogOverlay
       {...props}
-      className=" inset-0 z-40 bg-black/40 backdrop-blur-sm"
+      className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm"
     />
   )
 }
@@ -32,7 +32,7 @@ export function DialogContent(props: DialogPrimitive.DialogContentProps) {
 
       <DialogPrimitive.DialogContent
         {...props}
-        className="fixed text-white z-50 right-0 top-0 bottom-0 w-[400px]
+        className="fixed snap-y text-white z-50 right-0 top-0 bottom-0 w-[400px]
           max-md:h-auto border-l border-zinc-900 bg-zinc-950 p-8"
       />
     </DialogPortal>

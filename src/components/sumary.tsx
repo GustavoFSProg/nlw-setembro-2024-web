@@ -55,7 +55,8 @@ function Sumary() {
         justify-center
         items-center
     h-auto
-    w-full"
+    w-full
+    pb-36"
     >
       <div
         className=" bg-zinc-800

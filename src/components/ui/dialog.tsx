@@ -32,8 +32,9 @@ export function DialogContent(props: DialogPrimitive.DialogContentProps) {
 
       <DialogPrimitive.DialogContent
         {...props}
-        className="fixed overflow-x-scroll snap-y mb-64 text-white z-50 right-0 top-0 bottom-0 w-[400px]
-          max-md:h-auto border-l border-zinc-900 bg-zinc-950 p-8"
+        className="fixed overflow-y-scroll h-full mb-64 text-white z-50 
+        right-0 top-0 bottom-0 w-[400px]
+          border-l border-zinc-900 bg-zinc-950 p-8"
       />
     </DialogPortal>
   )

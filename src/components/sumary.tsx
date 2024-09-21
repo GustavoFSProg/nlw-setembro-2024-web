@@ -57,9 +57,9 @@ function Sumary() {
         items-center
     h-auto
     w-full
-    -mt-32
+    -mt-36
     pb-56
-    pt-5
+    pt-1
     "
       >
         <div

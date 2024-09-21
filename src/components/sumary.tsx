@@ -5,17 +5,16 @@ import CreateGoal from './create-goal'
 import InOrbitIconSVG from './in-orbit-icon'
 import { Progress, ProgressIndicator } from './ui/progress-bar'
 import { Separator } from './ui/separator'
-import { OutlineButton } from './ui/outline-button'
 import { useQuery } from '@tanstack/react-query'
 import { getSummary } from '../http/get-summary'
 import dayjs from 'dayjs'
 import ptBR from 'dayjs/locale/pt-br'
-import {
-  ReactElement,
-  JSXElementConstructor,
-  ReactNode,
-  ReactPortal,
-} from 'react'
+// import type {
+//   ReactElement,
+//   JSXElementConstructor,
+//   ReactNode,
+//   ReactPortal,
+// } from 'react'
 import { PendingGoals } from './pending-goals'
 
 dayjs.locale(ptBR)
@@ -51,15 +50,15 @@ function Sumary() {
 
   return (
     <div
-      className=" bg-zinc-900 
-      flex 
-        justify-center 
-        items-center     
-    h-auto 
+      className=" bg-zinc-900
+      flex
+        justify-center
+        items-center
+    h-auto
     w-full"
     >
       <div
-        className=" bg-zinc-800 
+        className=" bg-zinc-800
         gap-6 text-white py-10
        flex flex-col
     h-auto
@@ -70,7 +69,7 @@ function Sumary() {
         <CreateGoal />
 
         <div
-          className="flex flex-row h-20 w-full 
+          className="flex flex-row h-20 w-full
         items-center
         justify-between"
         >
@@ -129,21 +128,26 @@ function Sumary() {
                 <ul className="flex flex-col gap-3">
                   {goals.map(
                     (goal: {
-                      title:
-                        | string
-                        | number
-                        | boolean
-                        | ReactElement<any, string | JSXElementConstructor<any>>
-                        | Iterable<ReactNode>
-                        | ReactPortal
-                        | null
-                        | undefined
+                      [x: string]: string | number | Date | null | undefined
+                      title: string
+                      key: string
+                      // | string
+                      // | number
+                      // | boolean
+                      // // | ReactElement<string | JSXElementConstructor>
+                      // | Iterable<ReactNode>
+                      // | ReactPortal
+                      // | null
+                      // | undefined
                     }) => {
                       const time = dayjs(goal.createdAt).format('HH:mm[h]')
 
                       // dayjs(goal.createdAt).format('HH:MM')
                       return (
-                        <li key={goal.id} className="flex items-center gap-2">
+                        <li
+                          key={`${goal.id}`}
+                          className="flex items-center gap-2"
+                        >
                           <CheckCircle className="size-4 text-pink-500" />
                           <span className="text-smal text-zinc-400">
                             Você completou "

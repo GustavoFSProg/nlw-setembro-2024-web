@@ -48,7 +48,7 @@ function CreateGoal() {
 
   return (
     <DialogContent>
-      <div className="flex h-full flex-col gap-6 max-md:h-auto max-md:w-72 max-md:ml-11">
+      <div className="flex h-full flex-col gap-6  max-md:w-72 max-md:ml-11">
         <div className="flex flex-col gap-3">
           <div className="flex items-center justify-between">
             <DialogTitle>Cadastrar Meta</DialogTitle>
@@ -193,6 +193,13 @@ function CreateGoal() {
           </div>
         </form>
       </div>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
     </DialogContent>
   )
 }

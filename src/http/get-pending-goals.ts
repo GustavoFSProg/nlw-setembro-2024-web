@@ -8,7 +8,7 @@ export interface GetPendingGoalsResponse {
 }
 
 export async function getPendingGoals(): Promise<GetPendingGoalsResponse> {
-  const response = await fetch('http://localhost:3333/pending-goals')
+  const response = await fetch('https://in-orbit-nine.vercel.app/pending-goals')
   const data = await response.json()
 
   return data

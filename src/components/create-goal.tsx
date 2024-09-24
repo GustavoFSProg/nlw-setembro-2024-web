@@ -21,6 +21,7 @@ import { createGoal } from '../axios/create-goal-axios'
 // import { useQueryClient } from '@tanstack/react-query'
 // import TransitionsTooltips from './ToolTip'
 import Progress from './Progress'
+// import CircularWithValueLabel from './CirclarPercentage'
 import { useState } from 'react'
 
 const createGoalForm = z.object({
@@ -33,7 +34,7 @@ type CreateGoalForm = z.infer<typeof createGoalForm>
 function CreateGoal() {
   const [loading, setLoading] = useState(false)
 
-  const { register, control, formState, reset, handleSubmit } =
+  const { register, control, formState, handleSubmit } =
     useForm<CreateGoalForm>({
       resolver: zodResolver(createGoalForm),
     })
@@ -192,7 +193,7 @@ function CreateGoal() {
                 }}
               />
             </div>
-      {loading === true ?  <Progress /> : 
+      {loading === true ?  <Progress/> : 
       <div className='flex mt-20 -mb-20 items-center justify-center'>
 
       <p>Clique no botão Salvar!</p>

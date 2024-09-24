@@ -8,7 +8,9 @@ import Typography from '@mui/material/Typography';
 export default function Progress() {
   const [loading, setLoading] = React.useState(false);
   const [query, setQuery] = React.useState('idle');
-  const timerRef = React.useRef(undefined);
+  const timerRef = React.useRef<ReturnType<typeof setTimeout> | undefined>(
+    undefined,
+  );
 
   React.useEffect(
     () => () => {
@@ -17,11 +19,13 @@ export default function Progress() {
     [],
   );
 
-  const handleClickLoading = () => {
-    setLoading((prevLoading) => !prevLoading);
-  };
+  // const handleClickLoading = () => {
+  //   setLoading((prevLoading) => !prevLoading);
+  // };
 
   const handleClickQuery = () => {
+
+    setLoading((prevLoading) => !prevLoading);
     if (timerRef.current) {
       clearTimeout(timerRef.current);
     }
@@ -34,8 +38,9 @@ export default function Progress() {
     setQuery('progress');
     timerRef.current = setTimeout(() => {
       setQuery('success');
-    }, 5000);
+    }, 4000);
   };
+
 
   React.useEffect(() => {
     handleClickQuery()
@@ -61,7 +66,7 @@ export default function Progress() {
       </Button> */}
       <Box sx={{ height: 40 }}>
         {query === 'success' ? (
-          <Typography>Meta Cadastrada!</Typography>
+          <Typography>Meta Cadastrada!!</Typography>
         ) : (
           <Fade
             in={query === 'progress'}

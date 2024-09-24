@@ -199,7 +199,7 @@ function CreateGoal() {
       <p>Clique no botão Salvar!</p>
       </div>
       }
-            <div className="flex items-center mt-52 max-md:mt-20 gap-3">
+            <div className="flex items-center max-md:mt-44 mt-52 max-md:mt-20 gap-3">
               <DialogClose asChild>
                 <Button type="button" className="flex-1" variant="secondary">
                   Fechar

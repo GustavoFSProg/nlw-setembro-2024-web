@@ -10,7 +10,10 @@ export async function createGoal({
   desiredWeeklyFrequency,
 }: CreateGoalRequest): Promise<void> {
   // const response = await fetch('http://localhost:3333/goals', {
-  const { goalId } = await api.post('/goals', { title, desiredWeeklyFrequency })
+  const { goalId }: any = await api.post('/goals', {
+    title,
+    desiredWeeklyFrequency,
+  })
 
   if (!goalId) {
     throw new Error('Error while creating the goal completion')

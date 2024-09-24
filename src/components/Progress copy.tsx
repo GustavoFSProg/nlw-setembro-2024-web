@@ -45,7 +45,7 @@
 //     <Box sx={{ display: 'flex', flexDirection: 'column',
 //       marginTop: '50px',
 //     marginBottom: '-120px', alignItems: 'center' }}>
-//       <Box sx={{ height: 40 }}>
+//       {/* <Box sx={{ height: 40 }}>
 //         <Fade
 //           in={loading}
 //           style={{
@@ -55,7 +55,7 @@
 //         >
 //           <CircularProgress />
 //         </Fade>
-//       </Box>
+//       </Box> */}
 //       {/* <Button onClick={handleClickLoading} sx={{ m: 2 }}>
 //         {loading ? 'Stop loading' : 'Loading'}
 //       </Button> */}

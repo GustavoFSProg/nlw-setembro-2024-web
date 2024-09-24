@@ -6,7 +6,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Typography from '@mui/material/Typography';
 
 export default function Progress() {
-  const [loading, setLoading] = React.useState(false);
+  // const [loading, setLoading] = React.useState(false);
   const [query, setQuery] = React.useState('idle');
   const timerRef = React.useRef<ReturnType<typeof setTimeout> | undefined>(
     undefined,
@@ -25,7 +25,7 @@ export default function Progress() {
 
   const handleClickQuery = () => {
 
-    setLoading((prevLoading) => !prevLoading);
+    // setLoading((prevLoading) => !prevLoading);
     if (timerRef.current) {
       clearTimeout(timerRef.current);
     }
@@ -50,7 +50,7 @@ export default function Progress() {
     <Box sx={{ display: 'flex', flexDirection: 'column',
       marginTop: '50px',
     marginBottom: '-120px', alignItems: 'center' }}>
-      <Box sx={{ height: 40 }}>
+      {/* <Box sx={{ height: 40 }}>
         <Fade
           in={loading}
           style={{
@@ -60,7 +60,7 @@ export default function Progress() {
         >
           <CircularProgress />
         </Fade>
-      </Box>
+      </Box> */}
       {/* <Button onClick={handleClickLoading} sx={{ m: 2 }}>
         {loading ? 'Stop loading' : 'Loading'}
       </Button> */}

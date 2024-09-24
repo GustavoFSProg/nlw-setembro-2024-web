@@ -26,6 +26,10 @@ export function PendingGoals() {
     // location.reload()
   }
 
+//  async function delteGoalId(goalId){
+//     await api.delete(`/${goalId}`)
+//   }
+
   return (
     <div className="flex flex-wrap gap-3">
       {data.pendingGoals.map(goal => {
@@ -34,6 +38,7 @@ export function PendingGoals() {
             key={goal.id}
             onClick={() => handleCreateGoalCompletion(goal.id)}
             disabled={goal.completionCount >= goal.desiredWeeklyFrequency}
+            hidden={goal.completionCount >= goal.desiredWeeklyFrequency}
           >
             <Plus className="size-4 text-zinc-600" />
             {goal.title}

@@ -18,7 +18,10 @@ import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { createGoal } from '../axios/create-goal-axios'
 // import { createGoal } from '../http/create-goal'
-import { useQueryClient } from '@tanstack/react-query'
+// import { useQueryClient } from '@tanstack/react-query'
+// import TransitionsTooltips from './ToolTip'
+import Progress from './Progress'
+import { useState } from 'react'
 
 const createGoalForm = z.object({
   title: z.string().min(1, 'Informe a atividade que deseja realizar!'),
@@ -28,27 +31,33 @@ const createGoalForm = z.object({
 type CreateGoalForm = z.infer<typeof createGoalForm>
 
 function CreateGoal() {
+  const [loading, setLoading] = useState(false)
+
   const { register, control, formState, reset, handleSubmit } =
     useForm<CreateGoalForm>({
       resolver: zodResolver(createGoalForm),
     })
-  const queryClient = useQueryClient()
+  // const queryClient = useQueryClient()
 
   async function handleCreateGoals(data: CreateGoalForm) {
-    await createGoal({
+     setLoading(true)
+
+   await createGoal({
       title: data.title,
       desiredWeeklyFrequency: data.desiredWeeklyFrequency,
     })
 
-    console.log(data)
-    queryClient.invalidateQueries({ queryKey: ['summary'] })
-    queryClient.invalidateQueries({ queryKey: ['pending-goals'] })
 
-    reset()
+    // console.log(data)
+    // queryClient.invalidateQueries({ queryKey: ['summary'] })
+    // queryClient.invalidateQueries({ queryKey: ['pending-goals'] })
+
+    // reset()
   }
 
   return (
     <>
+
       <DialogContent>
         <div className="flex  flex-col gap-6  max-md:w-72 max-md:ml-11">
           <div className="flex  flex-col gap-3">
@@ -183,6 +192,12 @@ function CreateGoal() {
                 }}
               />
             </div>
+      {loading === true ?  <Progress /> : 
+      <div className='flex mt-20 -mb-20 items-center justify-center'>
+
+      <p>Clique no botão Salvar!</p>
+      </div>
+      }
             <div className="flex items-center mt-52 max-md:mt-20 gap-3">
               <DialogClose asChild>
                 <Button type="button" className="flex-1" variant="secondary">
@@ -197,7 +212,9 @@ function CreateGoal() {
         </div>
         <br />
         <br />
+        {/* <Progress /> */}
       </DialogContent>
+
       <br />
       <br />
       <br />

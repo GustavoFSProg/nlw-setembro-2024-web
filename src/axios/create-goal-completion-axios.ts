@@ -7,7 +7,7 @@ export interface CreateGoalCompletionRequest {
 export async function createGoalCompletion({
   goalId,
 }: CreateGoalCompletionRequest): Promise<void> {
-  const response = await api.post('http://localhost:3333/completions', {
+  const response = await api.post('/completions', {
     goalId,
   })
 

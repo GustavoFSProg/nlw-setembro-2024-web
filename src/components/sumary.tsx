@@ -1,4 +1,4 @@
-import { CheckCircle, Plus } from 'lucide-react'
+import { CheckCircle, Plus, RefreshCcw } from 'lucide-react'
 import { Button } from './ui/button'
 import { DialogTrigger } from './ui/dialog'
 import CreateGoal from './create-goal'
@@ -87,6 +87,9 @@ function Sumary() {
               </span>
             </div>
             <div className="flex items-center justify-between">
+            <button className="mr-4" onClick={() => location.reload()}>
+                <RefreshCcw />
+              </button>
               <DialogTrigger asChild>
                 <Button size="sm">
                   <Plus className="size-4 mr-1.5" />

@@ -16,6 +16,9 @@ import ptBR from 'dayjs/locale/pt-br'
 //   ReactPortal,
 // } from 'react'
 import { PendingGoals } from './pending-goals'
+import { useContext, useEffect } from 'react'
+import {refreshContext} from '../refreshContext'
+
 
 dayjs.locale(ptBR)
 
@@ -39,15 +42,26 @@ function Sumary() {
     queryFn: getSummary,
     staleTime: 1000 * 60, // 60 seconds
   })
-
+  
   if (!data) {
     return null
   }
+  const {refresh} = useContext(refreshContext)
+
+  if(refresh === true){
+    location.reload()
+    console.log(refresh)
+  }
+    // console.log(refresh)
 
   const firstDayOfWeek = dayjs().startOf('week').format('D MMM')
   const lastDayOfWeek = dayjs().endOf('week').format('D MMM')
 
   const completedPrecentage = Math.round((data?.completed * 100) / data?.total)
+
+  useEffect(() => {
+    // location.reload()
+  },[])
 
 
   return (
@@ -74,6 +88,7 @@ function Sumary() {
     px-5"
         >
           <CreateGoal />
+          {/* {refresh} */}
 
           <div
             className="flex flex-row h-20 w-full

@@ -22,8 +22,11 @@ import { createGoal } from '../axios/create-goal-axios'
 // import TransitionsTooltips from './ToolTip'
 import Progress from './Progress'
 // import CircularWithValueLabel from './CirclarPercentage'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 // import { locationReload } from './sumary'
+import {refreshContext} from '../refreshContext'
+
 
 const createGoalForm = z.object({
   title: z.string().min(1, 'Informe a atividade que deseja realizar!'),
@@ -33,9 +36,15 @@ const createGoalForm = z.object({
 type CreateGoalForm = z.infer<typeof createGoalForm>
 
 function CreateGoal() {
+  const {refresh, setRefresh} = useContext(refreshContext)
   const [loading, setLoading] = useState(false)
+  
 
-  const { register, control, formState, handleSubmit } =
+  // console.log(refresh)
+
+  const navigate = useNavigate()
+
+  const { register, reset, control, formState, handleSubmit } =
     useForm<CreateGoalForm>({
       resolver: zodResolver(createGoalForm),
     })
@@ -49,12 +58,20 @@ function CreateGoal() {
       desiredWeeklyFrequency: data.desiredWeeklyFrequency,
     })
 
+  
+
     // locationReload()
     // console.log(data)
     // queryClient.invalidateQueries({ queryKey: ['summary'] })
     // queryClient.invalidateQueries({ queryKey: ['pending-goals'] })
 
-    // reset()
+    reset()
+  }
+
+  function refreshFunction(){
+    setRefresh(true)
+
+    navigate('/')
   }
 
   return (
@@ -202,7 +219,9 @@ function CreateGoal() {
       }
             <div className="flex items-center max-md:mt-44 mt-52 max-md:mt-20 gap-3">
               <DialogClose asChild>
-                <Button type="button" className="flex-1" variant="secondary">
+                <Button type="button" 
+                onClick={refreshFunction}
+                className="flex-1" variant="secondary">
                   Fechar
                 </Button>
               </DialogClose>

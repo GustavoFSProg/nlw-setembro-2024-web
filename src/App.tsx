@@ -7,6 +7,9 @@ import EmptyGoals from './components/empty-goals'
 import CreateGoal from './components/create-goal'
 import { useQuery } from '@tanstack/react-query'
 import { getSummary } from './http/get-summary'
+// import { useEffect } from 'react'
+// import { useContext, useEffect } from 'react'
+// import {refreshContext} from './refreshContext'
 
 type SummaryResponse = {
   completed: number
@@ -23,6 +26,7 @@ type SummaryResponse = {
 
 function App() {
   // const [summary, setSummary] = useState<SummaryResponse | null>(null)
+  // const {refresh, setRefresh} = useContext(refreshContext)
 
   const { data } = useQuery<SummaryResponse | undefined>({
     queryKey: ['summary'],
@@ -30,18 +34,16 @@ function App() {
   })
 
   // useEffect(() => {
-  // fetch('http://localhost:3000/summary')
-  //   .then(response => {
-  //     return response.json()
-  //   })
-  //   .then(data => {
-  //     console.log(data)
-  //     setSummary(data.summary)
-  //   })
-  // }, [summary])
+  //   //  location.reload()
+  // }, [data])
 
+
+  //  setRefresh(true)
+
+  //  console.log(refresh)
   return (
     <>
+    {/* {refresh} */}
       <Dialog>
         {data?.total && data.total > 0 ? <Sumary /> : <EmptyGoals />}
 

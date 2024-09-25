@@ -38,7 +38,7 @@ export default function Progress() {
     setQuery('progress');
     timerRef.current = setTimeout(() => {
       setQuery('success');
-    }, 4000);
+    }, 2700);
   };
 
 

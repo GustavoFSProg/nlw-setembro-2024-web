@@ -32,6 +32,7 @@ type SummaryResponse = {
   >
 }
 
+
 function Sumary() {
   const { data } = useQuery<SummaryResponse | undefined>({
     queryKey: ['summary'],
@@ -47,6 +48,7 @@ function Sumary() {
   const lastDayOfWeek = dayjs().endOf('week').format('D MMM')
 
   const completedPrecentage = Math.round((data?.completed * 100) / data?.total)
+
 
   return (
     <>
@@ -86,9 +88,9 @@ function Sumary() {
                 {lastDayOfWeek}
               </span>
             </div>
-            <div className="flex items-center justify-between">
-            <button className="mr-4" onClick={() => location.reload()}>
-                <RefreshCcw />
+            <div className="flex max-md:flex-col justify-between">
+            <button className="mr-4 max-md:mb-2 max-md:mt-5" onClick={() => location.reload()}>
+                <RefreshCcw size="25"/>
               </button>
               <DialogTrigger asChild>
                 <Button size="sm">

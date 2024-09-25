@@ -23,6 +23,7 @@ import { createGoal } from '../axios/create-goal-axios'
 import Progress from './Progress'
 // import CircularWithValueLabel from './CirclarPercentage'
 import { useState } from 'react'
+// import { locationReload } from './sumary'
 
 const createGoalForm = z.object({
   title: z.string().min(1, 'Informe a atividade que deseja realizar!'),
@@ -48,7 +49,7 @@ function CreateGoal() {
       desiredWeeklyFrequency: data.desiredWeeklyFrequency,
     })
 
-
+    // locationReload()
     // console.log(data)
     // queryClient.invalidateQueries({ queryKey: ['summary'] })
     // queryClient.invalidateQueries({ queryKey: ['pending-goals'] })

@@ -66,7 +66,7 @@ export default function Progress() {
       </Button> */}
       <Box sx={{ height: 40 }}>
         {query === 'success' ? (
-          <Typography>Meta Cadastrada!!</Typography>
+          <Typography  style={{fontSize: '20px'}}>Meta Cadastrada!!</Typography>
         ) : (
           <Fade
             in={query === 'progress'}

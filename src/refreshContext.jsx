@@ -1,12 +1,11 @@
 import { createContext, useState } from "react";
 
-
-export const refreshContext = createContext({})
+export const refreshContext = createContext()
 
 
 
 // eslint-disable-next-line react/prop-types
-export function UserContextProvider({ children }: any) {
+export function UserContextProvider({ children }) {
     const [refresh, setRefresh] = useState(false)
   
     return (

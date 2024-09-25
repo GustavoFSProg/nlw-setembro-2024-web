@@ -36,7 +36,7 @@ const createGoalForm = z.object({
 type CreateGoalForm = z.infer<typeof createGoalForm>
 
 function CreateGoal() {
-  const {refresh, setRefresh} = useContext(refreshContext)
+  const { setRefresh} = useContext(refreshContext)
   const [loading, setLoading] = useState(false)
   
 
@@ -69,7 +69,7 @@ function CreateGoal() {
   }
 
   function refreshFunction(){
-    setRefresh(true)
+    setRefresh( true)
 
     navigate('/')
   }

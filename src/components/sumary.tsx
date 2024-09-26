@@ -124,8 +124,8 @@ function Sumary() {
                 <RefreshCcw size="25"/>
               </button> */}
               <DialogTrigger asChild>
-                <Button size="sm">
-                  <Plus className="size-4 mr-1.5" />
+                <Button size="sm" className='max-md:w-[110px]'>
+                  <Plus className="size-4 mr-1 " />
                   Cadastrar Meta
                 </Button>
               </DialogTrigger>

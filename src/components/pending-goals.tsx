@@ -7,7 +7,7 @@ import { createGoalCompletion } from '../axios/create-goal-completion-axios'
 import {refreshContext} from '../refreshContext'
 import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
-// import { Button } from './ui/button'
+import { Button } from './ui/button'
 
 export function PendingGoals() {
   const queryClient = useQueryClient()
@@ -37,14 +37,12 @@ export function PendingGoals() {
     goalId: string) {
 await createGoalCompletion({ goalId })
 
-//  console.log(`espera: ${espera}`)
 
 
 
 
-
-    queryClient.invalidateQueries({ queryKey: ['summary'] })
-    queryClient.invalidateQueries({ queryKey: ['pending-goals'] })
+    // queryClient.invalidateQueries({ queryKey: ['summary'] })
+    // queryClient.invalidateQueries({ queryKey: ['pending-goals'] })
  
    
   }
@@ -55,14 +53,20 @@ await createGoalCompletion({ goalId })
 
   return (
     <div className="flex flex-wrap gap-3">
+   <p>
+       Clique na Atividade e depois clique em ATUALIZAR
+    </p>
+        <Button type="button"
+     onClick={() => 
+       Relaods() 
+     }
+     > 
+     ATUALIZAR
+
+</Button>
       {data.pendingGoals.map(goal => {
         return (
           <>
-            {/* <button type="button" 
-          onClick={() => 
-            Relaods() 
-          }
-          > */}
             
          
           <OutlineButton
@@ -79,7 +83,7 @@ await createGoalCompletion({ goalId })
 
             {goal.title}
           </OutlineButton>
-          {/* </Button> */}
+          {/*  */}
             </>
         )
       })}

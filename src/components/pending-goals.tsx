@@ -1,6 +1,6 @@
 import { Plus } from 'lucide-react'
 import { OutlineButton } from './ui/outline-button'
-import { useQuery, useQueryClient } from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 import { getPendingGoals } from '../http/get-pending-goals'
 import { createGoalCompletion } from '../axios/create-goal-completion-axios'
 // import { createGoalCompletion } from '../http/create-goal-completion'
@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom'
 import { Button } from './ui/button'
 
 export function PendingGoals() {
-  const queryClient = useQueryClient()
+  // const queryClient = useQueryClient()
   const {setRefresh} = useContext(refreshContext)
   const navigate = useNavigate()
 

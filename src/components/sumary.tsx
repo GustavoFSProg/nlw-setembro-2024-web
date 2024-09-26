@@ -91,20 +91,19 @@ function Sumary() {
           <div className='flex h-auto w-[100%]
            mt-4 
           items-center justify-center
-          pr-5
-          pl-5
-          pb-6
-          pt-6
-          
+          pr-4
+          pl-
+          pb-5
+          pt-5          
           rounded-2xl
-                    bg-[#28364d]'>
+          bg-[#28364d]'>
 
           <h1 className='flex items-center 
          
           text-center
           justify-center text-[20px]
           max-md:text-[17px]
-          text-white'>APP DE CADASTRO E CONTROLE DE METAS</h1>
+          text-white'>APP DE CONTROLE DE METAS</h1>
           </div>
 
           <div

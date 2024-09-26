@@ -80,26 +80,43 @@ function Sumary() {
       >
         <div
           className=" bg-zinc-800
-        gap-6 text-white py-10
-       flex flex-col
-    h-auto
-    w-[480px]
-    -mt-10
-    px-5"
-        >
+          gap-6 text-white py-10
+          flex flex-col
+          h-auto
+          w-[480px]
+          -mt-10
+          px-5"
+          >
           <CreateGoal />
-          {/* {refresh} */}
+          <div className='flex h-auto w-[100%]
+           mt-4 
+          items-center justify-center
+          pr-5
+          pl-5
+          pb-6
+          pt-6
+          
+          rounded-2xl
+                    bg-[#28364d]'>
+
+          <h1 className='flex items-center 
+         
+          text-center
+          justify-center text-[20px]
+          max-md:text-[17px]
+          text-white'>APP DE CADASTRO E CONTROLE DE METAS</h1>
+          </div>
 
           <div
             className="flex flex-row h-20 w-full
-        items-center
-        justify-between"
+            items-center
+            justify-between"
           >
             <div className="flex items-center gap-3">
               <InOrbitIconSVG />
               <span className="text-lg font-semibold ">
                 {firstDayOfWeek}
-                <span className="mr-2 ml-2"> -</span>
+                <span className="mr-2 ml-2"> á </span>
                 {lastDayOfWeek}
               </span>
             </div>

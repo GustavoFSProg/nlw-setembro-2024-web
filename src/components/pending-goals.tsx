@@ -53,8 +53,9 @@ await createGoalCompletion({ goalId })
 
   return (
     <div className="flex flex-wrap gap-3">
-   <p>
-       Clique na Atividade e depois clique em ATUALIZAR
+    <h1>METAS PENDENTES:</h1>
+   <p className='mb-1 text-[15px]'>
+       Clique na Atividade (meta) e depois clique em ATUALIZAR para completar a meta!
     </p>
         <Button type="button"
      onClick={() => 

@@ -18,6 +18,7 @@ import ptBR from 'dayjs/locale/pt-br'
 import { PendingGoals } from './pending-goals'
 import { useContext, useEffect } from 'react'
 import {refreshContext} from '../refreshContext'
+import { useNavigate } from 'react-router-dom'
 
 
 dayjs.locale(ptBR)
@@ -42,10 +43,14 @@ function Sumary() {
     queryFn: getSummary,
     staleTime: 1000 * 60, // 60 seconds
   })
+
+  const navigate = useNavigate()
   
   if (!data) {
-    return null
+    navigate('/')
+    return console.log("Sem summary")
   }
+
   const {refresh} = useContext(refreshContext)
 
   if(refresh === true){
@@ -152,7 +157,9 @@ function Sumary() {
           <div className="flex flex-col pb-8 gap-6">
             <h2 className="text-xl font-medium">Sua Semana!</h2>
 
-            {Object.entries(data.goalsPerDay).map(([date, goals]: any) => {
+            {data.goalsPerDay ?
+            
+            Object.entries(data.goalsPerDay).map(([date, goals]: any) => {
               const weekDay = dayjs(date).format('dddd')
 
               const formatDate = dayjs(date).format('D[ de ]MMM')
@@ -206,7 +213,7 @@ function Sumary() {
                   </ul>
                 </div>
               )
-            })}
+            }) : <p>Sem metas completadas!</p> }
           </div>
         </div>
       </div>

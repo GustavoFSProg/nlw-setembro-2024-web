@@ -23,22 +23,23 @@ import { useNavigate } from 'react-router-dom'
 
 dayjs.locale(ptBR)
 
-type SummaryResponse = {
-  completed: number
-  total: number
-  goalsPerDay: Record<
-    string,
-    {
-      id: string
-      title: string
-      createdAt: string
-    }[]
-  >
-}
+// type SummaryResponse = {
+//   completed: number
+//   total: number
+//   goalsPerDay: Record<
+//     string,
+//     {
+//       id: string
+//       title: string
+//       createdAt: string
+//     }[]
+//   >
+// }
 
 
 function Sumary() {
-  const { data } = useQuery<SummaryResponse | undefined>({
+  const { data } = useQuery({
+    // const { data } = useQuery<SummaryResponse | undefined>({
     queryKey: ['summary'],
     queryFn: getSummary,
     staleTime: 1000 * 60, // 60 seconds
@@ -159,7 +160,7 @@ function Sumary() {
 
             {data.goalsPerDay ?
             
-            Object.entries(data.goalsPerDay).map(([date, goals]: any) => {
+            Object.entries(data.goalsPerDay).map(([date, goals]) => {
               const weekDay = dayjs(date).format('dddd')
 
               const formatDate = dayjs(date).format('D[ de ]MMM')
@@ -176,19 +177,9 @@ function Sumary() {
 
                   <ul className="flex flex-col gap-3">
                     {goals.map(
-                      (goal: {
-                        [x: string]: string | number | Date | null | undefined
-                        title: string
-                        key: string
-                        // | string
-                        // | number
-                        // | boolean
-                        // // | ReactElement<string | JSXElementConstructor>
-                        // | Iterable<ReactNode>
-                        // | ReactPortal
-                        // | null
-                        // | undefined
-                      }) => {
+                      (goal
+                       
+                      ) => {
                         const time = dayjs(goal.createdAt).format('HH:mm[h]')
 
                         // dayjs(goal.createdAt).format('HH:MM')
